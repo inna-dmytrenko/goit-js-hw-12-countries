@@ -21,7 +21,6 @@ body {
   background: linear-gradient(90deg, #b9deed, #efefef);
 }
 
-
 .search__input {
   outline: none;
   display: inline-block;
@@ -36,29 +35,19 @@ body {
 }
 
 .article {
-  display: flex;
+  display: block;
   flex-wrap: wrap;
 }
 
 .name {
   width: 1200px;
   display: flex;
-  justify-content: center;
   text-align: center;
 }
 
 .country-characteristics {
-  width: 600px;
   display: flex;
   flex-direction: column;
-  align-content: center;
-  align-items: center;
-}
-
-.img-flag {
-  width: 600px;
-  display: flex;
-  justify-content: center;
 }
 
 .langs,
