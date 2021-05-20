@@ -21,10 +21,6 @@ refs.form.addEventListener(
   }, 500),
 );
 
-// refs.input.addEventListener('input', e => {
-//   console.log(input.value);
-// });
-
 function searchFormInput(e) {
   const searchQuery = e.target.value;
   console.log(searchQuery);
