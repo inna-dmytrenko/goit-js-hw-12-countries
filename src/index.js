@@ -22,8 +22,7 @@ refs.form.addEventListener(
 );
 
 function searchFormInput(e) {
-  const searchQuery = e.target.value;
-
+  const searchQuery = e.target.value.trim();
   clearListItems();
 
   fetchCountries(searchQuery).then(data => {
@@ -42,15 +41,13 @@ function searchFormInput(e) {
       insertListItem(renderCountriesList);
     } else if (data.length === 1) {
       insertListItem(markup);
-    } else {
-      alert('Упс, что-то пошло не так. Корректно введите запрос');
     }
   });
 }
 
 function insertListItem(items) {
   refs.list.insertAdjacentHTML('beforeend', items);
-  console.log(items)
+  console.log(items);
 }
 
 function buildCountriesList(items) {
