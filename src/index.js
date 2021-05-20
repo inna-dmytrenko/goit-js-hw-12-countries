@@ -21,28 +21,36 @@ refs.form.addEventListener(
   }, 500),
 );
 
-function searchFormInput(e) {
-  const searchQuery = e.target.value.trim();
-  clearListItems();
+// refs.input.addEventListener('input', e => {
+//   console.log(input.value);
+// });
 
-  fetchCountries(searchQuery).then(data => {
-    const markup = buildListMarkup(data);
-    const renderCountriesList = buildCountriesList(data);
-    if (!data) {
-      return;
-    } else if (data.length > 10) {
-      PNotify.defaults.styling = 'material';
-      PNotify.defaults.icons = 'material';
-      PNotify.error({
-        title: 'Oh, No!',
-        text: 'Too many matches found. Please enter a more specific query!',
-      });
-    } else if (data.length >= 2 && data.length <= 10) {
-      insertListItem(renderCountriesList);
-    } else if (data.length === 1) {
-      insertListItem(markup);
-    }
-  });
+function searchFormInput(e) {
+  const searchQuery = e.target.value;
+  console.log(searchQuery);
+  clearListItems();
+  if (searchQuery.length > 0) {
+    fetchCountries(searchQuery).then(data => {
+      const markup = buildListMarkup(data);
+      const renderCountriesList = buildCountriesList(data);
+      if (!data) {
+        return;
+      } else if (data.length > 10) {
+        PNotify.defaults.styling = 'material';
+        PNotify.defaults.icons = 'material';
+        PNotify.error({
+          title: 'Oh, No!',
+          text: 'Too many matches found. Please enter a more specific query!',
+        });
+      } else if (data.length >= 2 && data.length <= 10) {
+        insertListItem(renderCountriesList);
+      } else if (data.length === 1) {
+        insertListItem(markup);
+      }
+    });
+  } else {
+    return;
+  }
 }
 
 function insertListItem(items) {
